@@ -19,13 +19,16 @@ Window::Window(std::string n, double w, double h) : name_{n}, width_{w}, height_
 { }
 
 void Window::display() {
-
+  double t=getTime();
   while (win_.isOpen())
   {
-    double t=getTime();
     win_.clear(sf::Color(100, 100, 100));
-    this->moveAll(20*(getTime()-t));
-    this->drawAll();
+    // double dt = 0.1-(getTime()-t);
+    double dt = getTime()-t;
+    t+=dt;
+    this->moveAll_(dt);
+    this->drawAll_();
+    // this->collision();
     win_.display();
 
     sf::Event event;

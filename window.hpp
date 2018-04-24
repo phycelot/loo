@@ -5,6 +5,7 @@
 #include <tuple>
 #include "SFML/Graphics.hpp"
 #include "circle.hpp"
+#include "rectangle.hpp"
 
 namespace s5loo {
 
@@ -25,22 +26,32 @@ namespace s5loo {
       void addCircle(Circle &c){
         circles_.emplace_back(std::move(c));
       }
-      void drawAll(){
-        for (size_t i = 0; i < circles_.size(); i++) {
-          draw(circles_[i],win_);
+      void addRectangle(Rectangle &c){
+        rectangles_.emplace_back(std::move(c));
+      }
+    private:
+      void drawAll_(){
+        for (const auto &elem: circles_) {
+          draw(elem,win_);
+        }
+        for (const auto &elem: rectangles_) {
+          draw(elem,win_);
         }
       }
 
-      void moveAll(double dt){
-        for (size_t i = 0; i < circles_.size(); i++) {
-          circles_[i].move(*this,dt);
+      void moveAll_(double dt){
+        for (auto &elem: circles_) {
+          elem.move(*this,dt);
+        }
+        for (auto &elem: rectangles_) {
+          elem.move(*this,dt);
         }
       }
-    private:
       std::string name_;
       double width_, height_;
       sf::RenderWindow win_;
       std::vector<Circle> circles_;
+      std::vector<Rectangle> rectangles_;
   };  // class Window
 
   /* inline member functions */

@@ -1,1 +1,1 @@
-circle.o: circle.cpp circle.hpp color.hpp window.hpp
+circle.o: circle.cpp circle.hpp color.hpp window.hpp rectangle.hpp

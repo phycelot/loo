@@ -1,9 +1,10 @@
 #include "window.hpp"
 #include "circle.hpp"
+#include "rectangle.hpp"
 #include <random>
 
 int main(void) {
-  s5loo::Window win{"Rectangles and Circles", 1920,1080};
+  s5loo::Window win{"Rectangles and Circles", 1500,1000};
   auto [width, height] = win.size();
 
   std::default_random_engine rndGen{std::random_device{}()};
@@ -25,9 +26,23 @@ int main(void) {
                           s5loo::uchar(colorDistr(rndGen))
                         }};
   };
+  auto makeRectangle=[&]()
+  {
+    return s5loo::Rectangle{xposDistr(rndGen),yposDistr(rndGen),
+                        speedDistr(rndGen),speedDistr(rndGen),
+                        dimDistr(rndGen),dimDistr(rndGen),
+                        angularDistr(rndGen),
+                        s5loo::Color{
+                          s5loo::uchar(colorDistr(rndGen)),
+                          s5loo::uchar(colorDistr(rndGen)),
+                          s5loo::uchar(colorDistr(rndGen))
+                        }};
+  };
   for (int i = 0; i < 300; i++) {
     auto tmp =makeCircle();
     win.addCircle(tmp);
+    auto tmp2 =makeRectangle();
+    win.addRectangle(tmp2);
   }
   win.display();
   return 0;
