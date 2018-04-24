@@ -24,7 +24,7 @@ void Window::display() {
   {
     double t=getTime();
     win_.clear(sf::Color(100, 100, 100));
-    this->moveAll(200*(getTime()-t));
+    this->moveAll(20*(getTime()-t));
     this->drawAll();
     win_.display();
 

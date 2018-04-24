@@ -23,17 +23,17 @@ namespace s5loo {
       sx_=-sx_;
       x_=winx-radius_*2;
     }
-    else if (x_<radius_)    {
+    else if (x_<=0.0)    {
       sx_=-sx_;
-      x_=0;
+      x_=0.0;
     }
     if (y_>winy-radius_*2) {
       sy_=-sy_;
       y_=winy-radius_*2;
     }
-    else if (y_<radius_)    {
+    else if (y_<=0.0)    {
       sy_=-sy_;
-      y_=0;
+      y_=0.0;
     }
     // std::cout << "x=" << x_ << ",y=" << y_ << ",radius=" << radius_<< '\n';
   }
