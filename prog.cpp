@@ -26,12 +26,22 @@ int main(void) {
                         }};
   };
   auto c1=makeCircle();
-  auto c2=makeCircle();
-  auto c3=makeCircle();
+  // auto c2=makeCircle();
+  // auto c3=makeCircle();
+  // auto c4=makeCircle();
+  // auto c5=makeCircle();
+  // auto c6=makeCircle();
+  // auto c7=makeCircle();
+  // auto c8=makeCircle();
 
   win.addCircle(c1);
-  win.addCircle(c2);
-  win.addCircle(c3);
+  // win.addCircle(c2);
+  // win.addCircle(c3);
+  // win.addCircle(c4);
+  // win.addCircle(c5);
+  // win.addCircle(c6);
+  // win.addCircle(c7);
+  // win.addCircle(c8);
   win.display();
   return 0;
 }
