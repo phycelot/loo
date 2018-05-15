@@ -8,40 +8,41 @@ namespace s5loo {
     radius_{radius}
     {}
 
-  // void
-  // Circle::move(const Window &win, double dt)
-  // {
-  //   x_+=dt*sx_;
-  //   y_+=dt*sy_;
-  //
-  //   auto [winx,winy]=win.size();
-  //   if (x_>winx-radius_) {
-  //     sx_=-sx_;
-  //     x_=winx-radius_;
-  //   }
-  //   else if (x_<=radius_)    {
-  //     sx_=-sx_;
-  //     x_=radius_;
-  //   }
-  //   if (y_>winy-radius_) {
-  //     sy_=-sy_;
-  //     y_=winy-radius_;
-  //   }
-  //   else if (y_<=radius_)    {
-  //     sy_=-sy_;
-  //     y_=radius_;
-  //   }
-  //   // std::cout << "x=" << x_ << ",y=" << y_ << ",radius=" << radius_<< '\n';
-  // }
-
-
-  void draw(const Circle &c, sf::RenderWindow &rw)
+  void
+  Circle::move(const Window &win, double dt)
   {
-    sf::CircleShape s{float(c.radius())};
-    auto color=c.color();
-    s.setFillColor(sf::Color{color[0],color[1], color[2]});
-    auto [x,y]=c.position();
-    s.setPosition(float(x-c.radius()),float(y-c.radius()));
+    Shape::move(win,dt);
+    // x_+=dt*sx_;
+    // y_+=dt*sy_;
+    //
+    // auto [winx,winy]=win.size();
+    // if (x_>winx-radius_) {
+    //   sx_=-sx_;
+    //   x_=winx-radius_;
+    // }
+    // else if (x_<=radius_)    {
+    //   sx_=-sx_;
+    //   x_=radius_;
+    // }
+    // if (y_>winy-radius_) {
+    //   sy_=-sy_;
+    //   y_=winy-radius_;
+    // }
+    // else if (y_<=radius_)    {
+    //   sy_=-sy_;
+    //   y_=radius_;
+    // }
+    // std::cout << "x=" << x_ << ",y=" << y_ << ",radius=" << radius_<< '\n';
+  }
+
+
+  void Circle::draw(sf::RenderWindow &rw) const
+  {
+    sf::CircleShape s{float(radius())};
+    auto c=color();
+    s.setFillColor(sf::Color{c[0],c[1], c[2]});
+    auto [x,y]=position();
+    s.setPosition(float(x-radius()),float(y-radius()));
     rw.draw(s);
   }
 }

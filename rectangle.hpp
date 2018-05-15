@@ -24,13 +24,14 @@ namespace s5loo {
       double angularSpeed() const{
         return angularSpeed_;
       }
-      void move(const Window &win, double dt);
+      void move(const Window &win, double dt) override;
       void angle(double a);
       double angle() const{
         return angle_;
       }
+      void draw(sf::RenderWindow &rw) const override;
+
     };
-  void draw(const Rectangle &c, sf::RenderWindow &rw);
 
 }
 #endif

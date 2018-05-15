@@ -21,15 +21,15 @@ namespace s5loo {
 
 
   void
-  draw(const Rectangle &c, sf::RenderWindow &rw)
+  Rectangle::draw(sf::RenderWindow &rw) const
   {
-    auto [w,h]=c.size();
+    auto [w,h]=size();
     sf::RectangleShape s{sf::Vector2f{float(w),float(h)}};
-    auto color=c.color();
-    s.setFillColor(sf::Color{color[0],color[1], color[2]});
-    auto [x,y]=c.position();
+    auto c=color();
+    s.setFillColor(sf::Color{c[0],c[1], c[2]});
+    auto [x,y]=position();
     s.setPosition(float(x),float(y));
-    s.setRotation(float(c.angle()));
+    s.setRotation(float(angle()));
     rw.draw(s);
   }
   void

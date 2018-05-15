@@ -22,9 +22,10 @@ namespace s5loo {
       double radius() const{
         return radius_;
       }
-      // void Circle::move(const Window &win, double dt);
+      void move(const Window &win, double dt) override;
+      void draw(sf::RenderWindow &rw) const override;
     };
-  void draw(const Circle &c, sf::RenderWindow &rw);
+
 
 }
 #endif

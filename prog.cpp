@@ -1,6 +1,7 @@
 #include "window.hpp"
-#include "circle.hpp"
-#include "rectangle.hpp"
+// #include "circle.hpp"
+// #include "rectangle.hpp"
+#include "shape.hpp"
 #include <random>
 
 int main(void) {
@@ -17,32 +18,32 @@ int main(void) {
 
   auto makeCircle=[&]()
   {
-    return s5loo::Circle{xposDistr(rndGen),yposDistr(rndGen),
-                        speedDistr(rndGen),speedDistr(rndGen),
-                        dimDistr(rndGen),
-                        s5loo::Color{
-                          s5loo::uchar(colorDistr(rndGen)),
-                          s5loo::uchar(colorDistr(rndGen)),
-                          s5loo::uchar(colorDistr(rndGen))
-                        }};
+    return std::make_unique<s5loo::Circle>(
+      xposDistr(rndGen),yposDistr(rndGen),
+      speedDistr(rndGen),speedDistr(rndGen),
+      dimDistr(rndGen),
+      s5loo::Color{
+        s5loo::uchar(colorDistr(rndGen)),
+        s5loo::uchar(colorDistr(rndGen)),
+        s5loo::uchar(colorDistr(rndGen))
+      });
   };
   auto makeRectangle=[&]()
   {
-    return s5loo::Rectangle{xposDistr(rndGen),yposDistr(rndGen),
-                        speedDistr(rndGen),speedDistr(rndGen),
-                        dimDistr(rndGen),dimDistr(rndGen),
-                        angularDistr(rndGen),
-                        s5loo::Color{
-                          s5loo::uchar(colorDistr(rndGen)),
-                          s5loo::uchar(colorDistr(rndGen)),
-                          s5loo::uchar(colorDistr(rndGen))
-                        }};
+    return std::make_unique<s5loo::Rectangle>(
+      xposDistr(rndGen),yposDistr(rndGen),
+      speedDistr(rndGen),speedDistr(rndGen),
+      dimDistr(rndGen),dimDistr(rndGen),
+      angularDistr(rndGen),
+      s5loo::Color{
+        s5loo::uchar(colorDistr(rndGen)),
+        s5loo::uchar(colorDistr(rndGen)),
+        s5loo::uchar(colorDistr(rndGen))
+      });
   };
   for (int i = 0; i < 10; i++) {
-    auto tmp =makeCircle();
-    win.addCircle(tmp);
-    auto tmp2 =makeRectangle();
-    win.addRectangle(tmp2);
+    win.addShape(makeCircle());
+    win.addShape(makeRectangle());
   }
   win.display();
   return 0;

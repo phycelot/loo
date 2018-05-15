@@ -18,6 +18,22 @@ Window::Window(std::string n, double w, double h) : name_{n}, width_{w}, height_
                                          win_{sf::VideoMode{(unsigned int)width_, (unsigned int)height_}, name_.data()}
 { }
 
+void Window::addShape(std::unique_ptr<Shape> shape)
+{
+  shapes_.emplace_back(std::move(shape));
+}
+void Window::moveAll_(double dt){
+  for (auto &elem: shapes_) {
+    elem->move(*this,dt);
+  }
+}
+void Window::drawAll_(){
+  for (auto &elem: shapes_) {
+    // elem->draw(*this);
+    elem->draw(win_);
+  }
+}
+
 void Window::display() {
   double t=getTime();
   while (win_.isOpen())
