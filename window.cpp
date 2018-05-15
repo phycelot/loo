@@ -23,12 +23,10 @@ void Window::display() {
   while (win_.isOpen())
   {
     win_.clear(sf::Color(100, 100, 100));
-    // double dt = 0.1-(getTime()-t);
     double dt = getTime()-t;
     t+=dt;
     this->moveAll_(dt);
     this->drawAll_();
-    // this->collision();
     win_.display();
 
     sf::Event event;

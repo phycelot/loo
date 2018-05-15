@@ -4,7 +4,7 @@
 #include <random>
 
 int main(void) {
-  s5loo::Window win{"Rectangles and Circles", 1500,1000};
+  s5loo::Window win{"Rectangles and Circles", 500,500};
   auto [width, height] = win.size();
 
   std::default_random_engine rndGen{std::random_device{}()};
@@ -38,7 +38,7 @@ int main(void) {
                           s5loo::uchar(colorDistr(rndGen))
                         }};
   };
-  for (int i = 0; i < 300; i++) {
+  for (int i = 0; i < 10; i++) {
     auto tmp =makeCircle();
     win.addCircle(tmp);
     auto tmp2 =makeRectangle();
