@@ -40,4 +40,13 @@ namespace s5loo {
   double Shape::boundingSphere() {
     return 1.1;
   }
+  void Shape::click(sf::RenderWindow& win, int x, int y){
+    const double r=boundingSphere();
+    const double dx=x-x_, dy=y-y_;
+    if(dx*dx+dy*dy<=r*r) {
+      std::cout << "click on a shape" << '\n';
+      sx_=-sx_;
+      sy_=-sy_;
+    }
+  }
 }

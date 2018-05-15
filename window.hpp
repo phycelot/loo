@@ -35,6 +35,8 @@ namespace s5loo {
       double width_, height_;
       sf::RenderWindow win_;
       std::vector<std::unique_ptr<Shape>> shapes_;
+
+      void left_click(int x,int y);
   };  // class Window
 
   /* inline member functions */

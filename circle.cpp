@@ -18,6 +18,9 @@ namespace s5loo {
     return radius();
   }
 
+  void Circle::click(sf::RenderWindow& win, int x, int y){
+    Shape::click(win,x,y);
+  }
 
   void Circle::draw(sf::RenderWindow &rw) const
   {

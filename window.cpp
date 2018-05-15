@@ -34,6 +34,12 @@ void Window::drawAll_(){
   }
 }
 
+void Window::left_click(int x,int y){
+  for (auto &elem: shapes_) {
+    elem->click(win_,x,y);
+  }
+}
+
 void Window::display() {
   double t=getTime();
   while (win_.isOpen())
@@ -61,6 +67,7 @@ void Window::display() {
         case sf::Event::MouseButtonPressed:
              if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                std::cout<< "left_button on (" << event.mouseButton.x << "," << event.mouseButton.y << ")\n";
+               this->left_click(event.mouseButton.x,event.mouseButton.y);
              }
              break;
         case sf::Event::KeyPressed:

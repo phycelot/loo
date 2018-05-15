@@ -24,6 +24,10 @@ namespace s5loo {
     Shape::move(win,dt);
   }
 
+  void
+  Rectangle::click(sf::RenderWindow& win, int x, int y){
+    Shape::click(win,x,y);
+  }
 
   void
   Rectangle::draw(sf::RenderWindow &rw) const

@@ -48,6 +48,9 @@ namespace s5loo {
 
       virtual
       void draw(sf::RenderWindow& win) const=0 ;
+
+      virtual
+      void click(sf::RenderWindow& win,int x, int y);
     };
 
 }
