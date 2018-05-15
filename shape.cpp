@@ -14,26 +14,30 @@ namespace s5loo {
   void
   Shape::move(const Window &win, double dt)
   {
+    double r=boundingSphere();
     x_+=dt*sx_;
     y_+=dt*sy_;
 
     auto [winx,winy]=win.size();
-    if (x_>winx) {
+    if (x_>winx-r) {
       sx_=-sx_;
-      x_=winx;
+      x_=winx-r;
     }
-    else if (x_<=0)    {
+    else if (x_<=r)    {
       sx_=-sx_;
-      x_=0;
+      x_=r;
     }
-    if (y_>winy) {
+    if (y_>winy-r) {
       sy_=-sy_;
-      y_=winy;
+      y_=winy-r;
     }
-    else if (y_<=0)    {
+    else if (y_<=r)    {
       sy_=-sy_;
-      y_=0;
+      y_=r;
     }
     // std::cout << "x=" << x_ << ",y=" << y_ << ",radius=" << radius_<< '\n';
+  }
+  double Shape::boundingSphere() {
+    return 1.1;
   }
 }

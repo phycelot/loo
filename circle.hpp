@@ -24,6 +24,7 @@ namespace s5loo {
       }
       void move(const Window &win, double dt) override;
       void draw(sf::RenderWindow &rw) const override;
+      double boundingSphere() override;
     };
 
 

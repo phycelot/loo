@@ -12,27 +12,10 @@ namespace s5loo {
   Circle::move(const Window &win, double dt)
   {
     Shape::move(win,dt);
-    // x_+=dt*sx_;
-    // y_+=dt*sy_;
-    //
-    // auto [winx,winy]=win.size();
-    // if (x_>winx-radius_) {
-    //   sx_=-sx_;
-    //   x_=winx-radius_;
-    // }
-    // else if (x_<=radius_)    {
-    //   sx_=-sx_;
-    //   x_=radius_;
-    // }
-    // if (y_>winy-radius_) {
-    //   sy_=-sy_;
-    //   y_=winy-radius_;
-    // }
-    // else if (y_<=radius_)    {
-    //   sy_=-sy_;
-    //   y_=radius_;
-    // }
-    // std::cout << "x=" << x_ << ",y=" << y_ << ",radius=" << radius_<< '\n';
+  }
+
+  double Circle::boundingSphere() {
+    return radius();
   }
 
 

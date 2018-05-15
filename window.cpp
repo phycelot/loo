@@ -40,13 +40,18 @@ void Window::display() {
   {
     win_.clear(sf::Color(100, 100, 100));
     double dt = getTime()-t;
+    const double step=1.0/30.0;
+     // target 30 FPS
+    if(dt<step) {
+      sf::sleep(sf::seconds(float(step-dt)));
+    }
     t+=dt;
     this->moveAll_(dt);
     this->drawAll_();
     win_.display();
 
     sf::Event event;
-    if(win_.pollEvent(event))
+    while(win_.pollEvent(event))
     {
       switch (event.type)
       {

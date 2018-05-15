@@ -25,6 +25,7 @@ namespace s5loo {
         return angularSpeed_;
       }
       void move(const Window &win, double dt) override;
+      double boundingSphere() override;
       void angle(double a);
       double angle() const{
         return angle_;

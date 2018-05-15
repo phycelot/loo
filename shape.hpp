@@ -44,6 +44,9 @@ namespace s5loo {
       void move(const Window &win, double dt);
 
       virtual
+      double boundingSphere();
+
+      virtual
       void draw(sf::RenderWindow& win) const=0 ;
     };
 

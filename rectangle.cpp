@@ -12,6 +12,11 @@ namespace s5loo {
     angle_{0.0}
     {}
 
+  double Rectangle::boundingSphere() {
+    // const double radius=std::sqrt(width_*width_+height_*height_);
+    return std::sqrt(width_*width_+height_*height_);
+  }
+
   void
   Rectangle::move(const Window &win, double dt)
   {
