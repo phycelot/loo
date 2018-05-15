@@ -1,7 +1,10 @@
 #ifndef SHAPE_HPP
 #define SHAPE_HPP 1
+
 #include <vector>
 #include <tuple>
+#include <random>
+
 #include "color.hpp"
 // #include "window.hpp"
 #include "SFML/Graphics.hpp"
@@ -49,8 +52,10 @@ namespace s5loo {
       virtual
       void draw(sf::RenderWindow& win) const=0 ;
 
-      virtual
       void click(sf::RenderWindow& win,int x, int y);
+
+      virtual
+      void do_click(sf::RenderWindow& win,int x, int y);
     };
 
 }

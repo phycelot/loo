@@ -25,8 +25,7 @@ namespace s5loo {
   }
 
   void
-  Rectangle::click(sf::RenderWindow& win, int x, int y){
-    Shape::click(win,x,y);
+  Rectangle::do_click(sf::RenderWindow& win, int x, int y){
   }
 
   void

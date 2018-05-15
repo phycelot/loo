@@ -37,6 +37,7 @@ namespace s5loo {
     }
     // std::cout << "x=" << x_ << ",y=" << y_ << ",radius=" << radius_<< '\n';
   }
+  
   double Shape::boundingSphere() {
     return 1.1;
   }
@@ -47,6 +48,8 @@ namespace s5loo {
       std::cout << "click on a shape" << '\n';
       sx_=-sx_;
       sy_=-sy_;
+      do_click(win,x,y);
     }
   }
+  void Shape::do_click(sf::RenderWindow& win,int x, int y){}
 }
