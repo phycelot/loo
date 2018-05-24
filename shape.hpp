@@ -4,6 +4,7 @@
 #include <vector>
 #include <tuple>
 #include <random>
+#include <iostream>
 
 #include "color.hpp"
 // #include "window.hpp"
@@ -35,8 +36,27 @@ namespace s5loo {
         return {x_,y_};
       }
 
+      void setPosition(double x, double y)
+      {
+        x_=x;
+        y_=y;
+      }
+
       std::tuple<double,double> speed() const{
         return {sx_,sy_};
+      }
+
+      void invertSpeed()
+      {
+        std::cout << "invertSpeed" << '\n';
+        sx_=-sx_;
+        sy_=-sy_;
+      }
+
+      void setSpeed(double sx, double sy)
+      {
+        sx_=sx;
+        sy_=sy;
       }
 
       Color color() const{
@@ -48,6 +68,9 @@ namespace s5loo {
 
       virtual
       double boundingSphere();
+
+      virtual
+      bool collide(std::unique_ptr<Shape> &s);
 
       virtual
       void draw(sf::RenderWindow& win) const=0 ;

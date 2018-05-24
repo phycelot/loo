@@ -40,6 +40,19 @@ void Window::left_click(int x,int y){
   }
 }
 
+void Window::collideAll_() {
+  for (auto &elem: shapes_) {
+    for (auto &elem2: shapes_) {
+        if (!(elem==elem2)) {
+          if(elem->collide(elem2))
+          {
+            // break;
+          }
+        }
+    }
+  }
+}
+
 void Window::display() {
   double t=getTime();
   while (win_.isOpen())
@@ -52,8 +65,10 @@ void Window::display() {
       sf::sleep(sf::seconds(float(step-dt)));
     }
     t+=dt;
+    this->collideAll_();
     this->moveAll_(dt);
     this->drawAll_();
+    std::cout << getTime() << '\n';
     win_.display();
 
     sf::Event event;

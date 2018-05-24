@@ -12,7 +12,7 @@ namespace s5loo {
 
   class Window {
     public:
-      Window(std::string n="Window", double w=700, double h=500);
+      Window(std::string n="Window", double w=700, double h=700);
 
       /* Special functions -- copy constructor and copy assignement are deleted */
       Window(const Window&) = delete;
@@ -31,9 +31,15 @@ namespace s5loo {
       void drawAll_();
 
       void moveAll_(double dt);
+
+      void collideAll_();
+
       std::string name_;
+
       double width_, height_;
+
       sf::RenderWindow win_;
+
       std::vector<std::unique_ptr<Shape>> shapes_;
 
       void left_click(int x,int y);

@@ -20,7 +20,7 @@ namespace s5loo {
   void
   Rectangle::move(const Window &win, double dt)
   {
-    angle(angle_+angularSpeed_*dt);
+    // angle(angle_+angularSpeed_*dt);
     Shape::move(win,dt);
   }
 
@@ -36,7 +36,7 @@ namespace s5loo {
     auto c=color();
     s.setFillColor(sf::Color{c[0],c[1], c[2]});
     auto [x,y]=position();
-    s.setPosition(float(x),float(y));
+    s.setPosition(float(x-w/2),float(y-h/2));
     s.setRotation(float(angle()));
     rw.draw(s);
   }
