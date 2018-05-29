@@ -57,7 +57,7 @@ void Window::display() {
   {
     win_.clear(sf::Color(100, 100, 100));
     double dt = getTime()-t;
-    const double step=1.0/30.0;
+    const double step=1.0/60.0;
      // target 30 FPS
     if(dt<step) {
       sf::sleep(sf::seconds(float(step-dt)));

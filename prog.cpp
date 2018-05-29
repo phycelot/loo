@@ -41,7 +41,7 @@ int main(void) {
         s5loo::uchar(colorDistr(rndGen))
       });
   };
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < 5; i++) {
     win.addShape(makeCircle());
     // win.addShape(makeRectangle());
   }
