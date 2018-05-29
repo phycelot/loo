@@ -27,6 +27,8 @@ namespace s5loo {
       void move(const Window &win, double dt) override;
       double boundingSphere() override;
       void do_click(sf::RenderWindow& win, int x, int y) override;
+
+      double area() override;
       void angle(double a);
       double angle() const{
         return angle_;

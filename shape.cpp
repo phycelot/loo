@@ -51,9 +51,8 @@ namespace s5loo {
     const double dx=x-x_, dy=y-y_;
     if(dx*dx+dy*dy<=r*r) {
       std::cout << "click on a shape" << '\n';
-      sx_=-sx_;
-      sy_=-sy_;
-      do_click(win,x,y);
+      this->invertSpeed();
+      this->do_click(win,x,y);
     }
   }
 
@@ -61,32 +60,50 @@ namespace s5loo {
   {
     const double r1=boundingSphere();
     const double r2=s->boundingSphere();
-    auto [x1,y1]=position();
-    auto [x2,y2]=s->position();
-    auto [sx1,sy1]=speed();
-    auto [sx2,sy2]=s->speed();
-    double ssx2=sx2/abs(sx2);
-    double ssy2=sy2/abs(sy2);
-    double ssx1=sx1/abs(sx1);
-    double ssy1=sy1/abs(sy1);
-    double s_x1=x1/abs(x1);
-    double s_y1=y1/abs(y1);
+    const auto [x1,y1]=position();
+    const auto [x2,y2]=s->position();
 
-    double distance = sqrt(((x1 - x2) * (x1 - x2))+ ((y1 - y2) * (y1 - y2)));
+    // double ssx2=sx2/abs(sx2);
+    // double ssy2=sy2/abs(sy2);
+    // double ssx1=sx1/abs(sx1);
+    // double ssy1=sy1/abs(sy1);
+    // double s_x1=x1/abs(x1);
+    // double s_y1=y1/abs(y1);
+
+
+
+    const double distance = sqrt(((x1 - x2) * (x1 - x2))+ ((y1 - y2) * (y1 - y2)));
 
     // else
-    if (0.99*distance < r1 + r2)
+    if (distance < r1 + r2)
     {
+      std::cout << "collide detected" << '\n';
+      const auto [sx1,sy1]=speed();
+      std::cout << "before sx :" << sx1 << " & sy : " << sy1<< '\n';
+      // const auto [sx2,sy2]=s->speed();
+      const double a1=area();
+      const double a2=s->area();
+      double Nx=x1-x2;
+      double Ny=y1-y2;
+      #if 1
+      double optimizedP=2*(x1-x2)/((a1+a2));
+      #else
+      double optimizedP=0;
+      #endif
+      double v1px=sx1-optimizedP*a2*Nx;
+      double v1py=sy1-optimizedP*a2*Ny;
+      std::cout << "after sx :" << v1px << " & sy : " << v1py<< '\n';
+      setSpeed(v1px,v1py);
       // std::cout << "collide" << '\n';
-      setSpeed(-ssx2*sx1,-ssy2*sy1);
-      if (1.1*distance < r1 + r2) {
-        std::cout << "collide too much" << '\n';
-        auto [sx1,sy1]=speed();
-        auto ssx1=sx1/abs(sx1);
-        auto ssy1=sy1/abs(sy1);
-        double distDiff = abs(distance -( r1 + r2));
-        setPosition(x1+ssx1*distDiff,y1+ssy1*distDiff);
-      }
+      // setSpeed(-ssx2*sx1,-ssy2*sy1);
+      // if (1.1*distance < r1 + r2) {
+      //   std::cout << "collide too much" << '\n';
+      //   auto [sx1,sy1]=speed();
+      //   auto ssx1=sx1/abs(sx1);
+      //   auto ssy1=sy1/abs(sy1);
+      //   double distDiff = abs(distance -( r1 + r2));
+      //   setPosition(x1+ssx1*distDiff,y1+ssy1*distDiff);
+      // }
       return 1;
     }
 
@@ -94,5 +111,5 @@ namespace s5loo {
   }
 
 
-  void Shape::do_click(sf::RenderWindow& win,int x, int y){}
+  // void Shape::do_click(sf::RenderWindow& win,int x, int y){}
 }

@@ -22,6 +22,9 @@ namespace s5loo {
       double radius() const{
         return radius_;
       }
+
+
+      double area() override;
       void move(const Window &win, double dt) override;
       void draw(sf::RenderWindow &rw) const override;
       double boundingSphere() override;

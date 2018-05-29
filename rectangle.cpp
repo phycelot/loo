@@ -26,6 +26,7 @@ namespace s5loo {
 
   void
   Rectangle::do_click(sf::RenderWindow& win, int x, int y){
+    std::cout << "Rectangle::do_click" << '\n';
   }
 
   void
@@ -40,6 +41,12 @@ namespace s5loo {
     s.setRotation(float(angle()));
     rw.draw(s);
   }
+
+  double Rectangle::area()
+  {
+    return height_*width_;
+  }
+
   void
   Rectangle::angle(double a)
   {

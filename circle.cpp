@@ -19,6 +19,13 @@ namespace s5loo {
   }
 
   void Circle::do_click(sf::RenderWindow& win, int x, int y){
+    std::cout << "Circle::do_click" << '\n';
+  }
+
+  double
+  Circle::area()
+  {
+    return 3.14*radius_*radius_;
   }
 
   void Circle::draw(sf::RenderWindow &rw) const

@@ -45,9 +45,7 @@ void Window::collideAll_() {
     for (auto &elem2: shapes_) {
         if (!(elem==elem2)) {
           if(elem->collide(elem2))
-          {
-            // break;
-          }
+          {}
         }
     }
   }

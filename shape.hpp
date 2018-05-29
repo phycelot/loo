@@ -78,7 +78,10 @@ namespace s5loo {
       void click(sf::RenderWindow& win,int x, int y);
 
       virtual
-      void do_click(sf::RenderWindow& win,int x, int y);
+      double area() =0;
+
+      virtual
+      void do_click(sf::RenderWindow& win,int x, int y) =0;
     };
 
 }
