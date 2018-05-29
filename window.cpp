@@ -68,7 +68,7 @@ void Window::display() {
     this->collideAll_();
     this->moveAll_(dt);
     this->drawAll_();
-    std::cout << getTime() << '\n';
+    // std::cout << dt << '\n';
     win_.display();
 
     sf::Event event;

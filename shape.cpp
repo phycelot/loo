@@ -75,25 +75,18 @@ namespace s5loo {
     double distance = sqrt(((x1 - x2) * (x1 - x2))+ ((y1 - y2) * (y1 - y2)));
 
     // else
-    if (1.0*distance < r1 + r2)
+    if (0.99*distance < r1 + r2)
     {
       // std::cout << "collide" << '\n';
+      setSpeed(-ssx2*sx1,-ssy2*sy1);
       if (1.1*distance < r1 + r2) {
         std::cout << "collide too much" << '\n';
-        // double distDiff = abs(distance -( r1 + r2));
-        // setPosition(x1-s_x1*distDiff,y1-s_y1*distDiff);
+        auto [sx1,sy1]=speed();
+        auto ssx1=sx1/abs(sx1);
+        auto ssy1=sy1/abs(sy1);
+        double distDiff = abs(distance -( r1 + r2));
+        setPosition(x1+ssx1*distDiff,y1+ssy1*distDiff);
       }
-      if  (!(ssx2*ssx1/abs(ssx2*ssx1) && ssy2*ssy1/abs(ssy2*ssy1)))
-      {
-        std::cout << "change speed" << '\n';
-        setSpeed(-ssx2*sx1,-ssy2*sy1);
-
-      }
-
-
-      // auto [sx1,sy1]=speed();
-      setSpeed(-ssx2*sx1,-ssy2*sy1);
-      // invertSpeed();
       return 1;
     }
 
